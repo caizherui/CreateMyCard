@@ -64,7 +64,7 @@ Column(
         props.leftEarIcon,
         Image(
           props.leftEarIcon,
-          { "width": 12, "height": 12, "fillColor": $theme('supportContentColor') }
+          { "width": 12, "height": 12, "objectFit": "contain", "_preserveOriginalColor": true }
         )
       ),
       IfAbsent(
@@ -91,7 +91,7 @@ Column(
         props.rightEarIcon,
         Image(
           props.rightEarIcon,
-          { "width": 12, "height": 12, "fillColor": $theme('supportContentColor') }
+          { "width": 12, "height": 12, "objectFit": "contain", "_preserveOriginalColor": true }
         )
       ),
       IfAbsent(
@@ -186,7 +186,7 @@ Column(
       Stack(
         {"width": 40, "height": 40, "alignContent": "center", "flexShrink": 0},
         Progress(
-          {"value": data.left, "total": 100, "type": "ring", "color": "#64BB5C", "backgroundColor": "#1A000000", "width": 40, "height": 40, "strokeWidth": 5}
+          {"value": data.left, "total": 100, "type": "ring", "color": $theme('supportContentColor'), "backgroundColor": "#1A000000", "width": 40, "height": 40, "strokeWidth": 5}
         ),
         IfPresent(
           props.leftEarIcon,
@@ -214,7 +214,7 @@ Column(
       Stack(
         {"width": 40, "height": 40, "alignContent": "center", "flexShrink": 0},
         Progress(
-          {"value": data.right, "total": 100, "type": "ring", "color": "#64BB5C", "backgroundColor": "#1A000000", "width": 40, "height": 40, "strokeWidth": 5}
+          {"value": data.right, "total": 100, "type": "ring", "color": $theme('supportContentColor'), "backgroundColor": "#1A000000", "width": 40, "height": 40, "strokeWidth": 5}
         ),
         IfPresent(
           props.rightEarIcon,
@@ -242,7 +242,7 @@ Column(
       Stack(
         {"width": 40, "height": 40, "alignContent": "center", "flexShrink": 0},
         Progress(
-          {"value": data.battery, "total": 100, "type": "ring", "color": "#64BB5C", "backgroundColor": "#1A000000", "width": 40, "height": 40, "strokeWidth": 5}
+          {"value": data.battery, "total": 100, "type": "ring", "color": $theme('supportContentColor'), "backgroundColor": "#1A000000", "width": 40, "height": 40, "strokeWidth": 5}
         ),
         IfPresent(
           props.deviceIcon,
@@ -653,7 +653,7 @@ Row(
   ),
   Image(
     props.deviceIcon,
-    { "width": 24, "height": 24, "fillColor": $theme('supportContentColor') }
+    { "width": 24, "height": 24, "objectFit": "contain", "_preserveOriginalColor": true }
   )
 )
 
@@ -706,7 +706,7 @@ Column(
         props.leftEarIcon,
         Image(
           props.leftEarIcon,
-          { "width": 20, "height": 20, "fillColor": $theme('supportContentColor') }
+          { "width": 20, "height": 20, "objectFit": "contain", "_preserveOriginalColor": true }
         )
       ),
       IfAbsent(
@@ -730,7 +730,7 @@ Column(
         props.rightEarIcon,
         Image(
           props.rightEarIcon,
-          { "width": 20, "height": 20, "fillColor": $theme('supportContentColor') }
+          { "width": 20, "height": 20, "objectFit": "contain", "_preserveOriginalColor": true }
         )
       ),
       IfAbsent(
@@ -913,7 +913,7 @@ Column(
         props.leftEarIcon,
         Image(
           props.leftEarIcon,
-          { "width": 12, "height": 12, "fillColor": $theme('supportContentColor') }
+          { "width": 12, "height": 12, "objectFit": "contain", "_preserveOriginalColor": true }
         )
       ),
       IfAbsent(
@@ -940,7 +940,7 @@ Column(
         props.rightEarIcon,
         Image(
           props.rightEarIcon,
-          { "width": 12, "height": 12, "fillColor": $theme('supportContentColor') }
+          { "width": 12, "height": 12, "objectFit": "contain", "_preserveOriginalColor": true }
         )
       ),
       IfAbsent(
