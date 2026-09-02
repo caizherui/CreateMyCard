@@ -5,6 +5,9 @@
 - 可用模板：
   - `BluetoothDeviceOverviewHero@1`：展示连接状态、设备名和左右耳电量；可选左右耳图标；用于
     `HeroActionLayout@1` 加一个 `PillAction@1`。
+  - `BluetoothDeviceOverviewBatteryStatusWideFull@1`：展示连接状态及左耳、右耳、耳机盒电量；用于
+    `WideFullHeroActionLayout@1` 左侧的 WideFull 区域。应传入本轮可信 `title` 作为标题；`title` 不是
+    数据绑定，没有可信标题时省略但仍保留标题空间。设备、左右耳和耳机盒图标均可选。
   - `BluetoothDeviceOverviewCaseStatusCompact@1`：展示盒电量和充电状态，可选左右耳充电状态；
     `deviceIcon` 必填，`headerLabel` 可选；用于 `CompactTwoActionLayout@1` 加两个 `PillAction@1`。
   - `BluetoothDeviceOverviewEarbudsSupport@1`：展示左右耳电量；`deviceIcon` 必填；仅供兼容 LLM 路径
@@ -20,6 +23,8 @@
 - 兼容路径中的 Support `actionId` 只在该业务有已批准事件时传入；没有对应事件时省略，根节点不生成
   `onClick`。
 - `headerLabel` 只能逐字复用 `cardComposition.businessTitleCandidate`；没有可信标题时省略。
+- `BluetoothDeviceOverviewBatteryStatusWideFull@1` 的 `title` 只能来自本轮可信文本，例如用户需求或
+  `cardComposition.businessTitleCandidate`，不得从连接状态或电量值反推。
 - Props 只能使用本轮 Prompt 下发的可信文本或素材，不得输出数据路径。
 - 选择能够完整表达用户显式字段且自身 `primaryData` 与 `secondaryData` 全部可用的模板。
 - 素材参数不绑定固定素材 ID，只从本轮素材候选中按语义匹配：

@@ -110,6 +110,129 @@ Column(
 )
 #End
 
+#Template BluetoothDeviceOverviewBatteryStatusWideFull@1(props: { title?: string, deviceIcon?: asset, caseIcon?: asset, leftEarIcon?: asset, rightEarIcon?: asset })
+data = {
+    connected: $path("/isConnected"),
+    battery: $path("/batteryLevel"),
+    left: $path("/leftBatteryLevel"),
+    right: $path("/rightBatteryLevel")
+}
+
+Column(
+  {
+    "_advancedComponent": "BluetoothDeviceOverview",
+    "_layoutActionBackgroundOpacity": 0.1,
+    "width": "matchParent",
+    "height": "matchParent",
+    "itemMargin": 30,
+    "justifyContent": "start",
+    "alignItems": "start",
+    "clip": true,
+    "constraintSize": {"minWidth": 0, "minHeight": 0}
+  },
+  Column(
+    {
+      "width": "matchParent",
+      "height": 48,
+      "itemMargin": 4,
+      "justifyContent": "start",
+      "alignItems": "start",
+      "constraintSize": {"minWidth": 0, "minHeight": 0}
+    },
+    Row(
+      {
+        "width": "matchParent",
+        "height": 20,
+        "itemMargin": 4,
+        "justifyContent": "spaceBetween",
+        "alignItems": "center",
+        "constraintSize": {"minWidth": 0, "minHeight": 0}
+      },
+      IfPresent(
+        props.title,
+        Text(
+          props.title,
+          {"layoutWeight": 1, "height": 16, "fontSize": 12, "fontWeight": 400, "fontColor": $theme('supportContentColor'), "maxLines": 1, "textAlign": "start", "textOverflow": "ellipsis", "constraintSize": {"minWidth": 0, "minHeight": 0}}
+        )
+      ),
+      IfAbsent(
+        props.title,
+        Text(
+          "",
+          {"layoutWeight": 1, "height": 16, "fontSize": 12, "fontWeight": 400, "fontColor": $theme('supportContentColor'), "maxLines": 1, "textAlign": "start", "textOverflow": "ellipsis", "constraintSize": {"minWidth": 0, "minHeight": 0}}
+        )
+      ),
+      IfPresent(
+        props.deviceIcon,
+        Image(
+          props.deviceIcon,
+          {"width": 20, "height": 20, "objectFit": "contain", "fillColor": $theme('supportContentColor')}
+        )
+      )
+    ),
+    Text(
+      Expr(`${data.connected} ? '已连接' : '未连接'`),
+      {"width": "matchParent", "height": 24, "fontSize": 18, "fontWeight": 700, "fontColor": $theme('primaryColor'), "maxLines": 1, "textAlign": "start", "textOverflow": "ellipsis", "constraintSize": {"minWidth": 0, "minHeight": 0}}
+    )
+  ),
+  Row(
+    {
+      "width": "matchParent",
+      "height": 34,
+      "itemMargin": 10,
+      "justifyContent": "center",
+      "alignItems": "start",
+      "constraintSize": {"minWidth": 0, "minHeight": 0}
+    },
+    Column(
+      {"width": 32, "height": 34, "itemMargin": 2, "justifyContent": "start", "alignItems": "center"},
+      IfPresent(
+        props.leftEarIcon,
+        Image(props.leftEarIcon, {"width": 16, "height": 16, "objectFit": "contain", "fillColor": $theme('supportContentColor')})
+      ),
+      IfAbsent(
+        props.leftEarIcon,
+        Text("左", {"width": 16, "height": 16, "fontSize": 10, "fontWeight": 500, "fontColor": $theme('supportContentColor'), "textAlign": "center"})
+      ),
+      Text(
+        Expr(`'' + ${data.left} + '%'`),
+        {"width": 32, "height": 16, "fontSize": 8, "fontWeight": 400, "fontColor": $theme('supportContentColor'), "maxLines": 1, "textAlign": "center", "textOverflow": "ellipsis"}
+      )
+    ),
+    Column(
+      {"width": 32, "height": 34, "itemMargin": 2, "justifyContent": "start", "alignItems": "center"},
+      IfPresent(
+        props.rightEarIcon,
+        Image(props.rightEarIcon, {"width": 16, "height": 16, "objectFit": "contain", "fillColor": $theme('supportContentColor')})
+      ),
+      IfAbsent(
+        props.rightEarIcon,
+        Text("右", {"width": 16, "height": 16, "fontSize": 10, "fontWeight": 500, "fontColor": $theme('supportContentColor'), "textAlign": "center"})
+      ),
+      Text(
+        Expr(`'' + ${data.right} + '%'`),
+        {"width": 32, "height": 16, "fontSize": 8, "fontWeight": 400, "fontColor": $theme('supportContentColor'), "maxLines": 1, "textAlign": "center", "textOverflow": "ellipsis"}
+      )
+    ),
+    Column(
+      {"width": 32, "height": 34, "itemMargin": 2, "justifyContent": "start", "alignItems": "center"},
+      IfPresent(
+        props.caseIcon,
+        Image(props.caseIcon, {"width": 16, "height": 16, "objectFit": "contain", "fillColor": $theme('supportContentColor')})
+      ),
+      IfAbsent(
+        props.caseIcon,
+        Text("盒", {"width": 16, "height": 16, "fontSize": 10, "fontWeight": 500, "fontColor": $theme('supportContentColor'), "textAlign": "center"})
+      ),
+      Text(
+        Expr(`'' + ${data.battery} + '%'`),
+        {"width": 32, "height": 16, "fontSize": 8, "fontWeight": 400, "fontColor": $theme('supportContentColor'), "maxLines": 1, "textAlign": "center", "textOverflow": "ellipsis"}
+      )
+    )
+  )
+)
+#End
+
 #Template BluetoothDeviceOverviewCaseStatusCompact@1(props: { headerLabel?: string, deviceIcon: asset })
 data = {
     battery: $path("/batteryLevel"),

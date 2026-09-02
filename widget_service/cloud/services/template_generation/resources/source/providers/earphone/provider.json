@@ -32,6 +32,22 @@
       "optionalData": []
     },
     {
+      "templateId": "BluetoothDeviceOverviewBatteryStatusWideFull@1",
+      "businessId": "BluetoothDeviceOverview",
+      "capabilityId": "GetEarphoneInfo",
+      "description": "耳机电量状态 WideFull，展示连接状态及左耳、右耳、耳机盒电量；应传入可信 title 文本作为标题，用于 2x4 WideFullHeroActionLayout 的左侧区域。",
+      "entry": "templates/bluetooth-device-overview.cardtpl",
+      "primaryData": [
+        "/isConnected"
+      ],
+      "secondaryData": [
+        "/batteryLevel",
+        "/leftBatteryLevel",
+        "/rightBatteryLevel"
+      ],
+      "optionalData": []
+    },
+    {
       "templateId": "BluetoothDeviceOverviewCaseStatusCompact@1",
       "businessId": "BluetoothDeviceOverview",
       "capabilityId": "GetEarphoneInfo",
