@@ -16,18 +16,18 @@ def test_template_preview_dataset_covers_all_business_templates(tmp_path):
     manifest = write_template_preview_dataset(tmp_path)
     cases = manifest["cases"]
 
-    assert manifest["templateCount"] == 88
+    assert manifest["templateCount"] == 89
     assert manifest["countsByLayout"] == {
         "Support": 19,
         "Compact": 17,
         "Hero": 18,
         "Full": 20,
-        "WideHero": 3,
+        "WideHero": 4,
         "WideFull": 11,
     }
-    assert manifest["countsBySize"] == {"2x2": 74, "2x4": 14}
-    assert len(cases) == 88
-    assert len({case["templateId"] for case in cases}) == 88
+    assert manifest["countsBySize"] == {"2x2": 74, "2x4": 15}
+    assert len(cases) == 89
+    assert len({case["templateId"] for case in cases}) == 89
     assert all((tmp_path / case["file"]).is_file() for case in cases)
 
 
@@ -97,6 +97,36 @@ def test_bluetooth_complete_wide_hero_matches_visual_contract():
         "{{ ${/data/earphone/rightBatteryLevel} }}",
         "{{ ${/data/earphone/batteryLevel} }}",
     ]
+
+
+def test_bluetooth_earbud_pair_wide_hero_matches_q046_visual_contract():
+    case = next(
+        item
+        for item in build_template_preview_cases()
+        if item.template_id == "BluetoothDeviceOverviewEarbudPairWideHero@1"
+    )
+
+    assert case.layout_kind == "WideHero"
+    assert case.size == "2x4"
+    assert case.content_height_vp == 124
+    assert case.primary_data == ("/isConnected", "/earphoneName")
+    assert case.secondary_data == ("/leftBatteryLevel", "/rightBatteryLevel")
+    components = case.messages[1]["updateComponents"]["components"]
+    component_by_id = {component["id"]: component for component in components}
+    assert component_by_id["root_0_0_0"]["styles"]["fontSize"] == 12
+    assert component_by_id["root_0_0_1"]["styles"]["fontSize"] == 20
+    battery_row = component_by_id["root_0_0_2"]
+    assert battery_row["styles"]["height"] == 24
+    assert battery_row["styles"]["justifyContent"] == "center"
+    assert battery_row["itemMargin"] == 40
+    used_height = 16 + 32 + 24 + 8 * 2
+    assert case.content_height_vp - used_height == 36
+    assert component_by_id["root_0_0_2_0_1"]["content"] == (
+        "{{ '' + ${/data/earphone/leftBatteryLevel} + '%' }}"
+    )
+    assert component_by_id["root_0_0_2_1_1"]["content"] == (
+        "{{ '' + ${/data/earphone/rightBatteryLevel} + '%' }}"
+    )
 
 
 def test_template_preview_assets_are_bundled_by_genui_evaluation():

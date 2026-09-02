@@ -269,6 +269,115 @@ Column(
 )
 #End
 
+#Template BluetoothDeviceOverviewEarbudPairWideHero@1(props: { leftEarIcon?: asset, rightEarIcon?: asset })
+data = {
+    connected: $path("/isConnected"),
+    name: $path("/earphoneName"),
+    left: $path("/leftBatteryLevel"),
+    right: $path("/rightBatteryLevel")
+}
+
+Column(
+  {
+    "_advancedComponent": "BluetoothDeviceOverview",
+    "_layoutActionBackgroundOpacity": 0.1,
+    "width": "matchParent",
+    "height": "matchParent",
+    "itemMargin": 8,
+    "justifyContent": "start",
+    "alignItems": "start",
+    "clip": true,
+    "constraintSize": {"minWidth": 0, "minHeight": 0}
+  },
+  Text(
+    data.name,
+    {
+      "width": "matchParent",
+      "height": 16,
+      "fontSize": 12,
+      "fontWeight": 400,
+      "fontColor": $theme('supportContentColor'),
+      "maxLines": 1,
+      "textAlign": "start",
+      "textOverflow": "ellipsis",
+      "constraintSize": {"minWidth": 0, "minHeight": 0}
+    }
+  ),
+  Text(
+    Expr(`${data.connected} ? '已连接' : '未连接'`),
+    {
+      "width": "matchParent",
+      "height": 32,
+      "fontSize": 20,
+      "fontWeight": 700,
+      "fontColor": $theme('primaryColor'),
+      "maxLines": 1,
+      "textAlign": "start",
+      "textOverflow": "ellipsis",
+      "constraintSize": {"minWidth": 0, "minHeight": 0}
+    }
+  ),
+  Row(
+    {
+      "width": "matchParent",
+      "height": 24,
+      "itemMargin": 40,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "constraintSize": {"minWidth": 0, "minHeight": 0}
+    },
+    Row(
+      {
+        "width": 72,
+        "height": 20,
+        "itemMargin": 4,
+        "justifyContent": "center",
+        "alignItems": "center"
+      },
+      IfPresent(
+        props.leftEarIcon,
+        Image(
+          props.leftEarIcon,
+          {"width": 16, "height": 16, "fillColor": $theme('supportContentColor')}
+        )
+      ),
+      IfAbsent(
+        props.leftEarIcon,
+        Text("左", {"fontSize": 12, "fontWeight": 500, "fontColor": $theme('supportContentColor')})
+      ),
+      Text(
+        Expr(`'' + ${data.left} + '%'`),
+        {"width": 48, "height": 16, "fontSize": 12, "fontWeight": 500, "fontColor": $theme('supportContentColor'), "maxLines": 1, "textAlign": "start", "textOverflow": "ellipsis"}
+      )
+    ),
+    Row(
+      {
+        "width": 72,
+        "height": 20,
+        "itemMargin": 4,
+        "justifyContent": "center",
+        "alignItems": "center"
+      },
+      IfPresent(
+        props.rightEarIcon,
+        Image(
+          props.rightEarIcon,
+          {"width": 16, "height": 16, "fillColor": $theme('supportContentColor')}
+        )
+      ),
+      IfAbsent(
+        props.rightEarIcon,
+        Text("右", {"fontSize": 12, "fontWeight": 500, "fontColor": $theme('supportContentColor')})
+      ),
+      Text(
+        Expr(`'' + ${data.right} + '%'`),
+        {"width": 48, "height": 16, "fontSize": 12, "fontWeight": 500, "fontColor": $theme('supportContentColor'), "maxLines": 1, "textAlign": "start", "textOverflow": "ellipsis"}
+      )
+    )
+  )
+)
+#End
+
 #Template BluetoothDeviceOverviewCaseStatusCompact@1(props: { headerLabel?: string, deviceIcon: asset })
 data = {
     battery: $path("/batteryLevel"),

@@ -8,6 +8,8 @@
   - `BluetoothDeviceOverviewCompleteWideHero@1`：用于 2x4 完整耳机状态；左上展示设备名和连接状态，
     居中按左耳、右耳、耳机盒顺序展示三个电量环及充电状态；用于 `WideSingleFocusLayout@1` 加一个
     `PillAction@1`。
+  - `BluetoothDeviceOverviewEarbudPairWideHero@1`：用于 2x4 耳机排障入口；展示设备名和连接状态，
+    并在中部居中展示左右耳电量；用于 `WideSingleFocusLayout@1` 加一个 `PillAction@1`。
   - `BluetoothDeviceOverviewCaseStatusCompact@1`：展示盒电量和充电状态，可选左右耳充电状态；
     `deviceIcon` 必填，`headerLabel` 可选；用于 `CompactTwoActionLayout@1` 加两个 `PillAction@1`。
   - `BluetoothDeviceOverviewEarbudsSupport@1`：展示左右耳电量；`deviceIcon` 必填；仅供兼容 LLM 路径
