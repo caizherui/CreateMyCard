@@ -52,6 +52,22 @@
       "optionalData": []
     },
     {
+      "templateId": "BluetoothDeviceOverviewEarbudPairWideHero@1",
+      "businessId": "BluetoothDeviceOverview",
+      "capabilityId": "GetEarphoneInfo",
+      "description": "耳机连接与左右耳电量 WideHero，展示耳机名称、连接状态，并在中部居中展示左右耳电量；用于 2x4 WideHero 加一个 PillAction。",
+      "entry": "templates/bluetooth-device-overview.cardtpl",
+      "primaryData": [
+        "/isConnected",
+        "/earphoneName"
+      ],
+      "secondaryData": [
+        "/leftBatteryLevel",
+        "/rightBatteryLevel"
+      ],
+      "optionalData": []
+    },
+    {
       "templateId": "BluetoothDeviceOverviewCaseStatusCompact@1",
       "businessId": "BluetoothDeviceOverview",
       "capabilityId": "GetEarphoneInfo",
