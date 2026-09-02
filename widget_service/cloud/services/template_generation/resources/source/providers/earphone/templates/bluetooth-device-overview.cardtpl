@@ -144,7 +144,7 @@ Column(
         "width": "matchParent",
         "height": 20,
         "itemMargin": 4,
-        "justifyContent": "spaceBetween",
+        "justifyContent": "start",
         "alignItems": "center",
         "constraintSize": {"minWidth": 0, "minHeight": 0}
       },
@@ -172,15 +172,15 @@ Column(
     ),
     Text(
       Expr(`${data.connected} ? '已连接' : '未连接'`),
-      {"width": "matchParent", "height": 24, "fontSize": 18, "fontWeight": 700, "fontColor": $theme('primaryColor'), "maxLines": 1, "textAlign": "start", "textOverflow": "ellipsis", "constraintSize": {"minWidth": 0, "minHeight": 0}}
+      {"width": 112, "height": 24, "fontSize": 18, "fontWeight": 700, "fontColor": $theme('primaryColor'), "maxLines": 1, "textAlign": "start", "textOverflow": "ellipsis", "constraintSize": {"minWidth": 0, "minHeight": 0}}
     )
   ),
   Row(
     {
-      "width": "matchParent",
+      "width": 116,
       "height": 34,
       "itemMargin": 10,
-      "justifyContent": "center",
+      "justifyContent": "start",
       "alignItems": "start",
       "constraintSize": {"minWidth": 0, "minHeight": 0}
     },

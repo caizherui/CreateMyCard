@@ -70,11 +70,13 @@ def test_bluetooth_battery_status_wide_full_matches_q048_visual_contract():
     assert title["styles"]["height"] == 16
     assert title["styles"]["fontSize"] == 12
     connection = component_by_id["root_0_0_0_1"]
+    assert connection["styles"]["width"] == 112
     assert connection["styles"]["height"] == 24
     assert connection["styles"]["fontSize"] == 18
     battery_row = component_by_id["root_0_0_1"]
+    assert battery_row["styles"]["width"] == 116
     assert battery_row["styles"]["height"] == 34
-    assert battery_row["styles"]["justifyContent"] == "center"
+    assert battery_row["styles"]["justifyContent"] == "start"
     assert battery_row["itemMargin"] == 10
     assert [component_by_id[f"root_0_0_1_{index}"]["styles"]["width"] for index in range(3)] == [
         32,
